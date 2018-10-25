@@ -44,6 +44,7 @@ spec:
         }
       }
     }
+
     stage('Test'){
       steps {
         container('maven') {
@@ -51,6 +52,7 @@ spec:
           }
        }
     }
+
     stage('Docker'){
       steps {
         container('docker') {
@@ -58,10 +60,11 @@ spec:
           }
        }
     }
+    
     stage('Run'){
       steps {
         container('docker') {
-          sh 'docker run -t my-app:$BUILD_NUMBER .'
+          sh 'docker run -t my-app:$BUILD_NUMBER'
           }
        }
     }
